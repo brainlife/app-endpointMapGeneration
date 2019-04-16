@@ -1,0 +1,28 @@
+/N/u/brlife/git/vistasoft
+commit cf75f1a8c037382d6a157f0a7b683a3fd424ee4c
+Merge: 8bea0b7 7e4a5c5
+Author: rokers <rokers@gmail.com>
+Date:   Fri Jul 13 17:13:01 2018 -0400
+
+    Merge branch 'master' of https://github.com/vistalab/vistasoft
+/N/u/brlife/git/jsonlab
+commit 474d8c824800b5f2109c08f989085cb961acdbe3
+Merge: ae7a5d9 38b24fb
+Author: Qianqian Fang <fangqq@gmail.com>
+Date:   Wed Sep 6 13:01:57 2017 -0400
+
+    Merge pull request #41 from dasantonym/master
+    
+    added package.json to be able to intall via npm package manager
+/N/u/brlife/git/wma_tools
+commit ab5eb7e382d8a83647949569bff61101f65da7b3
+Author: Daniel Bullock <dnbulloc@iu.edu>
+Date:   Tue Apr 16 12:53:45 2019 -0400
+
+    fixed bad call to field
+/N/u/brlife/git/encode
+commit 538a73bc4f8b4d94545bc2dfe434fec55e0c7a95
+Author: Soichi Hayashi <hayashis@iu.edu>
+Date:   Tue Jan 22 10:14:41 2019 -0500
+
+    fixed the issue where fiber goes missing.
