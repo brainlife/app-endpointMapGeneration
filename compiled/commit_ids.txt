@@ -15,11 +15,11 @@ Date:   Wed Sep 6 13:01:57 2017 -0400
     
     added package.json to be able to intall via npm package manager
 /N/u/brlife/git/wma_tools
-commit ab5eb7e382d8a83647949569bff61101f65da7b3
+commit d59601ae336635240bb934bb82b7a814e0570c99
 Author: Daniel Bullock <dnbulloc@iu.edu>
-Date:   Tue Apr 16 12:53:45 2019 -0400
+Date:   Tue Apr 16 15:48:06 2019 -0400
 
-    fixed bad call to field
+    now makes directory for rois
 /N/u/brlife/git/encode
 commit 538a73bc4f8b4d94545bc2dfe434fec55e0c7a95
 Author: Soichi Hayashi <hayashis@iu.edu>
