@@ -9,10 +9,9 @@ set -x
 [ -z "$FREESURFER_LICENSE" ] && echo "Please set FREESURFER_LICENSE in .bashrc" && exit 1;
 echo $FREESURFER_LICENSE > license.txt
 
-if [ ! -f convertgmmask.nii.gz ]; then
-    echo "converting convertgmmask file to nifti"
+if [ ! -f gm_mask.nii.gz ]; then
     time singularity exec -e -B `pwd`/license.txt:/usr/local/freesurfer/license.txt \
-	docker://brainlife/freesurfer_on_mcr:6.0.0 ./convertgmmask.sh
+        docker://brainlife/freesurfer_on_mcr:6.0.0 ./convertgmmask.sh
 fi
 
 #for old wmatools
