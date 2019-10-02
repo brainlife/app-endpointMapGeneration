@@ -1,0 +1,8 @@
+{
+    "decayFunc": "gaussian",
+    "decayRadiusThresh": 5,
+    "track": "../5d823e9813501ca579d83a2c/track.tck",
+    "classification": "../5d8289b013501c1628d83dbc/classification/classification.mat",
+    "tracts": "../5d8289b013501c1628d83dbc/classification/tracts",
+    "freesurfer": "../5d48f31303480e00281eb87f/5d44bca8e64025034ada9255/output"
+}
