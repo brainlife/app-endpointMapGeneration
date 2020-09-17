@@ -1,5 +1,5 @@
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/soichih/abcd-spec)
-[![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.194-blue.svg)](https://https://doi.org/10.25663/brainlife.app.194)
+[![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.194-blue.svg)](https://doi.org/10.25663/brainlife.app.194)
 
 # app-roi2roitracking
 This app will generate streamline endpoint density maps for all tracts in an input [White Matter Classification (WMC) structure](https://brainlife.io/datatype/5cc1d64c44947d8aea6b2d8b).  The user can specify what sort of decay/smoothing algorithm can be used (or whether one should be used at all).  
