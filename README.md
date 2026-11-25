@@ -2,6 +2,34 @@
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.194-blue.svg)](https://doi.org/10.25663/brainlife.app.194)
 
 # app-endpointMapGeneration
+
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+**Generates streamline endpoint density maps for every tract in a white matter classification (wmc), with exact, box or Gaussian smoothing of endpoints, masked to FreeSurfer grey matter.**
+
+Builds a grey matter mask from the FreeSurfer output and, for each classified tract, counts streamline endpoints per voxel, optionally spreading each endpoint with a box or Gaussian kernel of the given diameter, and writes the maps as NIfTI ROIs. Use it to see where tracts terminate in cortex or to make endpoint-based ROIs. The tck must be the tractogram the classification was computed on.
+
+Run it on brainlife.io: [https://doi.org/10.25663/brainlife.app.194](https://doi.org/10.25663/brainlife.app.194)
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `track` | `neuro/track/tck` | yes | Whole-brain tractogram the classification indexes into. Must be the tractogram used to generate the wmc classification. |
+| `classification` | `neuro/wmc` | yes | White matter classification (wmc) assigning streamlines to tracts. |
+| `freesurfer` | `neuro/freesurfer` | yes | FreeSurfer output used to build the grey matter mask. |
+
+| Output | Datatype | Description |
+|---|---|---|
+| `rois` | `neuro/rois` | Endpoint density maps, one NIfTI per tract and endpoint group. |
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `decayFunc` | enum |  | How endpoints are turned into density: exact endpoint voxels only, box (every voxel within the threshold distance counts as an endpoint) or Gaussian smoothing. Options: `exact`, `box`, `gaussian`. |
+| `decayRadiusThresh` | number | `1` | Odd integer values only, larger than 0. Defines the kernel to be used if either no decay or gaussian decay is selected. Defines *diameter* (not radius, hence odd) of smoothing kernel Ignored in the case of exact endpoints. |
+
+Runtime: container `brainlife/freesurfer_on_mcr:6.0.0`; 8 CPUs; 4 h walltime; needs `FREESURFER_LICENSE`.
+
+<!-- brainlife-app:end -->
+
 This app will generate streamline endpoint density maps for all tracts in an input [White Matter Classification (WMC) structure](https://brainlife.io/datatype/5cc1d64c44947d8aea6b2d8b).  The user can specify what sort of decay/smoothing algorithm can be used (or whether one should be used at all).  
 
 ### Authors
