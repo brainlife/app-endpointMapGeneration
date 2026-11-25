@@ -11,7 +11,7 @@ This app will generate streamline endpoint density maps for all tracts in an inp
 - [Soichi Hayashi](https://github.com/soichih) (hayashis@iu.edu)
 
 ### Project Director
-- [Franco Pestilli](https://github.com/francopestilli) (franpest@indiana.edu)
+- [Franco Pestilli](https://github.com/francopestilli) ([@francopestilli](https://github.com/francopestilli))
 
 
 ### Funding
