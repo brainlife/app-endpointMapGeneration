@@ -10,7 +10,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg" alt="MIT license"></a>
 </p>
 
-## 🧠 At a glance
+## At a glance
 
 <!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
 
@@ -20,14 +20,14 @@ Builds a grey matter mask from the FreeSurfer output and, for each classified tr
 
 | | |
 |---|---|
-| 📥 **Inputs** | `neuro/track/tck` · `neuro/wmc` · `neuro/freesurfer` |
-| 📤 **Outputs** | `neuro/rois` |
-| 🐳 **Container** | `brainlife/freesurfer_on_mcr:6.0.0` |
-| ⚙️ **Resources** | 8 CPUs · 4 h walltime |
-| 🔑 **Requires** | `FREESURFER_LICENSE` |
-| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.194](https://doi.org/10.25663/brainlife.app.194) |
+| **Inputs** | `neuro/track/tck` · `neuro/wmc` · `neuro/freesurfer` |
+| **Outputs** | `neuro/rois` |
+| **Container** | `brainlife/freesurfer_on_mcr:6.0.0` |
+| **Resources** | 8 CPUs · 4 h walltime |
+| **Requires** | `FREESURFER_LICENSE` |
+| **Run it** | [doi.org/10.25663/brainlife.app.194](https://doi.org/10.25663/brainlife.app.194) |
 
-#### 📥 Inputs
+#### Inputs
 
 | Input | Datatype | Required | Description |
 |---|---|---|---|
@@ -35,14 +35,14 @@ Builds a grey matter mask from the FreeSurfer output and, for each classified tr
 | `classification` | `neuro/wmc` | yes | White matter classification (wmc) assigning streamlines to tracts. |
 | `freesurfer` | `neuro/freesurfer` | yes | FreeSurfer output used to build the grey matter mask. |
 
-#### 📤 Outputs
+#### Outputs
 
 | Output | Datatype | Description |
 |---|---|---|
 | `rois` | `neuro/rois` | Endpoint density maps, one NIfTI per tract and endpoint group. |
 
 <details>
-<summary><b>⚙️ Parameters</b> (2)</summary>
+<summary><b>Parameters</b> (2)</summary>
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
@@ -53,14 +53,14 @@ Builds a grey matter mask from the FreeSurfer output and, for each classified tr
 
 <!-- brainlife-app:end -->
 
-## 🏷️ Versions on brainlife.io
+## Versions on brainlife.io
 
 | Version | Branch | Run it | Status |
 |---|---|---|---|
 | Generate tract endpoint maps | [`1.0`](https://github.com/brainlife/app-endpointMapGeneration/tree/1.0) | [doi:10.25663/brainlife.app.194](https://doi.org/10.25663/brainlife.app.194) | current |
 | Generate tract endpoint maps (takes the older `neuro/wmc-deprecated` classification) | [`master`](https://github.com/brainlife/app-endpointMapGeneration/tree/master) | [doi:10.25663/brainlife.app.182](https://doi.org/10.25663/brainlife.app.182) | deprecated |
 
-## 🔬 How it works
+## How it works
 
 1. A grey matter mask is built from the FreeSurfer `aparc+aseg` with `mri_binarize --gm` (FreeSurfer 6.0.0).
 2. For each tract in the [White Matter Classification (WMC)](https://brainlife.io/datatype/5cc1d64c44947d8aea6b2d8b), the streamline endpoints are counted per voxel with [`bsc_classifiedStreamEndpointCortex`](https://github.com/DanNBullock/wma_tools/blob/903a2af76578d6a8931fa4c931682993b11bd40e/Stream_Tools/bsc_classifiedStreamEndpointCortex.m) from [wma_tools](https://github.com/DanNBullock/wma_tools) (compiled MATLAB). The decay function [`decayFunc`](https://github.com/DanNBullock/wma_tools/blob/903a2af76578d6a8931fa4c931682993b11bd40e/Stream_Tools/bsc_classifiedStreamEndpointCortex.m#L32) controls how each endpoint is spread:
@@ -69,9 +69,9 @@ Builds a grey matter mask from the FreeSurfer output and, for each classified tr
    - `gaussian`: each endpoint is spread with a Gaussian smoothing kernel.
 3. [`decayRadiusThresh`](https://github.com/DanNBullock/wma_tools/blob/903a2af76578d6a8931fa4c931682993b11bd40e/Stream_Tools/bsc_classifiedStreamEndpointCortex.m#L42) sets the size of the box or Gaussian kernel. It is the kernel *diameter*, so use odd integers larger than 0; it is ignored for `exact`.
 
-## 🚀 Running the App
+## Running the App
 
-### ☁️ On brainlife.io
+### On brainlife.io
 
 Open the App at [doi.org/10.25663/brainlife.app.194](https://doi.org/10.25663/brainlife.app.194) and choose:
 
@@ -81,7 +81,7 @@ Open the App at [doi.org/10.25663/brainlife.app.194](https://doi.org/10.25663/br
 
 Pick the decay function and kernel size and press **Execute**. The maps are archived to your project as a `neuro/rois` dataset tagged `tractEndpointDensity`.
 
-### 💻 Locally
+### Locally
 
 You need [Singularity/Apptainer](https://apptainer.org/), [`jq`](https://jqlang.github.io/jq/) and a [FreeSurfer license](https://surfer.nmr.mgh.harvard.edu/registration.html). The endpoint mapping is compiled MATLAB and runs in the `brainlife/mcr:neurodebian1604-r2017a` container, so MATLAB is not needed.
 
@@ -106,7 +106,7 @@ You need [Singularity/Apptainer](https://apptainer.org/), [`jq`](https://jqlang.
    ./main
    ```
 
-## 📦 Outputs
+## Outputs
 
 A [`neuro/rois`](https://brainlife.io/datatypes/5be9ea0315a8683a39a1ebd9) directory with the endpoint density maps as NIfTI files, two per tract in the classification:
 
@@ -115,12 +115,12 @@ A [`neuro/rois`](https://brainlife.io/datatypes/5be9ea0315a8683a39a1ebd9) direct
 
 The rest of each file name is carried over from the tract names in the classification.
 
-## 🩺 Troubleshooting
+## Troubleshooting
 
 - **`Please set FREESURFER_LICENSE in .bashrc`**: export your FreeSurfer license as `FREESURFER_LICENSE` before running `./main`.
 - **Maps look wrong or empty**: the `.tck` must be the tractogram the classification indexes into.
 
-## 📚 Citing
+## Citing
 
 > [!TIP]
 > If you use this App in your work, please cite the App, the software it builds on and brainlife.io (below). GitHub's **Cite this repository** button gives the App citation in APA and BibTeX.
@@ -130,14 +130,14 @@ The rest of each file name is carried over from the tract names in the classific
 - Hayashi S, Caron BA, Heinsfeld AS, et al. brainlife.io: a decentralized and open-source cloud platform to support neuroscience research. *Nature Methods* 21:809–813 (2024). [doi:10.1038/s41592-024-02237-2](https://doi.org/10.1038/s41592-024-02237-2)
 - Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. *Scientific Data* 6:69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
 
-## 👥 Authors
+## Authors
 
 - Franco Pestilli (project director)
 - [Daniel Bullock](https://github.com/DanNBullock)
 
 **Contributors:** [Soichi Hayashi](https://github.com/soichih)
 
-## 💰 Funding
+## Funding
 
 [![Wellcome-226486/Z/22/Z](https://img.shields.io/badge/Wellcome-226486%2FZ%2F22%2FZ-purple.svg)](https://wellcome.org/)
 [![NIH-NINDS-U24NS140384](https://img.shields.io/badge/NIH_NINDS-U24NS140384-green.svg)](https://reporter.nih.gov/project-details/11261037)
@@ -156,6 +156,6 @@ The rest of each file name is carried over from the tract names in the classific
 
 <sub>brainlife.io is publicly funded, and acknowledging that support helps keep it running. This App was developed with support from Wellcome, the U.S. National Institutes of Health (including the BRAIN Initiative BRAIN CONNECTS program: The Axonal Projectome EXchange, U24NS140384, and the Center for Mesoscale Connectomics, UM1NS132207) and the U.S. National Science Foundation.</sub>
 
-## ⚖️ License
+## License
 
 [MIT](LICENSE). The compiled code also includes [vistasoft](https://github.com/vistalab/vistasoft), [encode](https://github.com/brainlife/encode), [jsonlab](https://github.com/fangq/jsonlab) and [wma_tools](https://github.com/DanNBullock/wma_tools), each under its own license; FreeSurfer is distributed under its own [license](https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSoftwareLicense).
